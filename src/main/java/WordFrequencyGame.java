@@ -4,6 +4,7 @@ public class WordFrequencyGame {
 
     public static final String S = "\\s+";
     public static final String SPACE = " ";
+    public static final String CALCULATE_ERROR = "Calculate Error";
 
     public String getWordFrequency(String sentence) {
         if (sentence.split(S).length == 1) {
@@ -38,7 +39,7 @@ public class WordFrequencyGame {
                 }
                 return joiner.toString();
             } catch (Exception e) {
-                return "Calculate Error";
+                return CALCULATE_ERROR;
             }
         }
     }
