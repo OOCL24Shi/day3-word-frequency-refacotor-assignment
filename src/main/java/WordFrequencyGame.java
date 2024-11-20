@@ -8,18 +8,14 @@ public class WordFrequencyGame {
     public static final String LINE_BREAK = "\n";
 
     public String getWordFrequency(String sentence) {
-        if (sentence.split(S).length == 1) {
-            return sentence + " 1";
-        } else {
-            try {
-                List<WordFrequency> wordFrequencyList = getInitialWordFrequency(sentence);
+        try {
+            List<WordFrequency> wordFrequencyList = getInitialWordFrequency(sentence);
 
-                wordFrequencyList = getWordFrequencies(wordFrequencyList);
+            wordFrequencyList = getWordFrequencies(wordFrequencyList);
 
-                return getResult(wordFrequencyList);
-            } catch (Exception e) {
-                return CALCULATE_ERROR;
-            }
+            return getResult(wordFrequencyList);
+        } catch (Exception e) {
+            return CALCULATE_ERROR;
         }
     }
 
@@ -51,7 +47,7 @@ public class WordFrequencyGame {
 
         List<WordFrequency> wordFrequencyList = new ArrayList<>();
         wordFrequencyList = Arrays.stream(words)
-                .map(word -> new WordFrequency(word,1))
+                .map(word -> new WordFrequency(word, 1))
                 .toList();
         return wordFrequencyList;
     }
