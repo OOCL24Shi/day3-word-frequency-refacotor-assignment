@@ -14,16 +14,7 @@ public class WordFrequencyGame {
             try {
                 List<WordFrequency> wordFrequencyList = getInitialWordFrequency(sentence);
 
-                Map<String, List<WordFrequency>> map = getListMap(wordFrequencyList);
-
-                List<WordFrequency> list = new ArrayList<>();
-                for (Map.Entry<String, List<WordFrequency>> entry : map.entrySet()) {
-                    WordFrequency wordFrequency = new WordFrequency(entry.getKey(), entry.getValue().size());
-                    list.add(wordFrequency);
-                }
-                wordFrequencyList = list;
-
-                wordFrequencyList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+                wordFrequencyList = getWordFrequencies(wordFrequencyList);
 
                 StringJoiner joiner = new StringJoiner(LINE_BREAK);
                 for (WordFrequency w : wordFrequencyList) {
@@ -35,6 +26,20 @@ public class WordFrequencyGame {
                 return CALCULATE_ERROR;
             }
         }
+    }
+
+    private List<WordFrequency> getWordFrequencies(List<WordFrequency> wordFrequencyList) {
+        Map<String, List<WordFrequency>> map = getListMap(wordFrequencyList);
+
+        List<WordFrequency> list = new ArrayList<>();
+        for (Map.Entry<String, List<WordFrequency>> entry : map.entrySet()) {
+            WordFrequency wordFrequency = new WordFrequency(entry.getKey(), entry.getValue().size());
+            list.add(wordFrequency);
+        }
+        wordFrequencyList = list;
+
+        wordFrequencyList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+        return wordFrequencyList;
     }
 
     private static List<WordFrequency> getInitialWordFrequency(String sentence) {
